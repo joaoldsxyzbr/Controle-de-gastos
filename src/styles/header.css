@@ -1,0 +1,7 @@
+.month-select { display: grid; gap: 6px; color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.month-select select { min-width: 190px; border: 1px solid var(--line); background: var(--panel); color: var(--text); padding: 11px 38px 11px 13px; border-radius: 12px; outline: none; }
+.status-wrap { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; border: 1px solid var(--line); background: rgba(17,20,23,.86); color: var(--soft); border-radius: 999px; padding: 0 14px; font-size: .78rem; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); box-shadow: 0 0 0 4px rgba(136,147,156,.08); }
+.status-wrap--synced .status-dot { background: var(--positive); }
+.status-wrap--error .status-dot { background: var(--negative); }
+.status-wrap--offline .status-dot { background: var(--warning); }
