@@ -1,4 +1,4 @@
-.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px; }
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px; }
 .metric-card, .card { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(22,26,30,.96), rgba(15,18,21,.96)); border-radius: 18px; box-shadow: 0 12px 40px rgba(0,0,0,.14); }
 .metric-card { padding: 18px; min-height: 136px; }
 .metric-topline { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .78rem; }
