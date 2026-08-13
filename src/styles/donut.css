@@ -1,0 +1,14 @@
+.donut-layout { display: grid; grid-template-columns: 190px 1fr; align-items: center; gap: 28px; min-height: 230px; }
+.donut { width: 178px; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(var(--positive) 0 var(--paid-angle), #30363b var(--paid-angle) 360deg); display: grid; place-items: center; position: relative; }
+.donut::after { content: ''; position: absolute; inset: 22px; background: #121619; border-radius: 50%; border: 1px solid #242a2f; }
+.donut > div { position: relative; z-index: 1; display: grid; text-align: center; }
+.donut strong { font-size: 2rem; letter-spacing: -.05em; }
+.donut span { color: var(--muted); font-size: .8rem; }
+.legend-stack { display: grid; gap: 10px; }
+.legend-row { display: grid; grid-template-columns: 10px 1fr; gap: 11px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.legend-row:last-child { border-bottom: 0; }
+.legend-row > span { width: 9px; height: 9px; border-radius: 50%; background: #4b545b; }
+.legend-row.paid > span { background: var(--positive); }
+.legend-row.pending > span { background: var(--warning); }
+.legend-row small { display: block; color: var(--muted); margin-bottom: 2px; }
+.legend-row strong { font-size: .95rem; }
