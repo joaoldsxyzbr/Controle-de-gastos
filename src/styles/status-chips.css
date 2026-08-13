@@ -1,0 +1,3 @@
+.status-chip { display: inline-flex; align-items: center; width: max-content; border: 1px solid var(--line); border-radius: 999px; padding: 4px 8px; font-size: .69rem; color: var(--muted); text-transform: capitalize; }
+.status-chip--pago { border-color: rgba(137,166,151,.34); color: #a9c1b4; background: rgba(137,166,151,.08); }
+.status-chip--pendente { border-color: rgba(181,161,127,.35); color: #c5b290; background: rgba(181,161,127,.08); }
