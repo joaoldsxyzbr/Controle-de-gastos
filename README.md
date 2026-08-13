@@ -7,7 +7,7 @@ Painel privado e somente leitura para visualizar os dados financeiros do projeto
 - React 19 + Vite 7
 - Supabase Auth com e-mail e senha
 - Supabase Data API
-- Supabase Realtime
+- Supabase Realtime opcional
 - CSS puro para gráficos e layout
 
 ## Princípios
@@ -15,7 +15,18 @@ Painel privado e somente leitura para visualizar os dados financeiros do projeto
 - O Supabase continua sendo a fonte de verdade.
 - O site não possui ações de criar, editar, pagar ou excluir despesas.
 - O acesso é pensado para uma allowlist por `auth.uid()`, não apenas para qualquer usuário autenticado.
-- As credenciais usadas no navegador são somente URL do projeto + chave publishable. Nunca use `service_role` no frontend.
+- O frontend usa somente URL do projeto + chave publishable. Nunca use `service_role` no navegador.
+
+## Variáveis de ambiente
+
+Copie `.env.example` para `.env` e preencha:
+
+```env
+VITE_SUPABASE_URL=https://cbvzvkxmovsxcfhnfdus.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sua_chave_publishable
+```
+
+Em produção, configure as mesmas variáveis no provedor de deploy. A chave publishable não fica gravada no código-fonte.
 
 ## Tabelas lidas
 
@@ -30,18 +41,22 @@ O painel atual acompanha:
 - `03-2027`
 - `04-2027`
 
-Ao criar uma nova tabela mensal, adicione o nome em `MONTH_TABLES` em `src/hooks/useGastos.js` e configure a mesma política de leitura/Reatime no Supabase.
+Ao criar uma nova tabela mensal, adicione o nome em `MONTH_TABLES` em `src/hooks/useGastos.js` e configure a mesma política de leitura no Supabase.
 
 ## Segurança do banco
 
-O arquivo `supabase/001_dashboard_readonly.sql` contém a configuração preparada para:
+Os arquivos em `supabase/` estão separados em etapas pequenas:
 
-1. criar uma allowlist `dashboard_access`;
-2. permitir somente `SELECT` nas tabelas mensais;
-3. restringir a leitura ao `auth.uid()` autorizado;
-4. habilitar Realtime nas tabelas do painel.
+1. `001_dashboard_access.sql` cria a allowlist `dashboard_access` e a política para o próprio usuário.
+2. `002_monthly_read_policies.sql` habilita RLS e libera somente `SELECT` das tabelas mensais para usuários autorizados.
 
-A allowlist começa vazia. Depois de criar o usuário em **Authentication > Users**, insira somente o UUID desse usuário em `dashboard_access`.
+A allowlist começa vazia. Depois de criar seu usuário em **Authentication > Users**, autorize somente o UUID desejado:
+
+```sql
+insert into public.dashboard_access (user_id) values ('SEU-UUID-AQUI');
+```
+
+Para atualização instantânea, habilite as tabelas mensais em **Database > Replication / Realtime** no painel do Supabase. Mesmo sem Realtime, o botão **Atualizar dados** continua funcionando.
 
 ## Desenvolvimento
 
