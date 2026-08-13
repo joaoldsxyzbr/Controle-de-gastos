@@ -1,0 +1,23 @@
+@media (max-width: 900px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .topbar-actions { justify-content: flex-start; }
+  .bar-chart { grid-template-columns: repeat(8, 90px); }
+}
+@media (max-width: 560px) {
+  .shell { width: min(100% - 20px, 1180px); padding-top: 24px; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .metric-card { min-height: 122px; }
+  .card { padding: 16px; border-radius: 16px; }
+  .donut-layout { grid-template-columns: 1fr; justify-items: center; gap: 8px; }
+  .legend-stack { width: 100%; }
+  .section-heading { align-items: flex-start; }
+  .month-select select { min-width: 0; width: 100%; }
+  .topbar-actions { width: 100%; }
+  .month-select { flex: 1; }
+  .status-wrap { width: 100%; justify-content: center; }
+  .top-expense { grid-template-columns: 28px minmax(0,1fr); padding: 8px 0; }
+  .top-expense b { grid-column: 2; color: var(--soft); }
+  .top-expense-copy { align-items: flex-start; flex-direction: column; gap: 4px; }
+}
