@@ -1,0 +1,5 @@
+.notice { display: flex; justify-content: space-between; gap: 16px; align-items: center; border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 16px 18px; margin-bottom: 18px; }
+.notice strong { display: block; margin-bottom: 4px; }
+.notice p { margin: 0; color: var(--muted); font-size: .86rem; }
+.notice button, .ghost-button { border: 1px solid var(--line); color: var(--soft); background: transparent; border-radius: 11px; padding: 9px 12px; }
+.notice button:hover, .ghost-button:hover { background: var(--panel-2); color: var(--text); }
